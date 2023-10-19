@@ -1,10 +1,44 @@
 import  mongoose from 'mongoose';
+import Joi from 'joi';
 
 const UserSchema=new mongoose.Schema({
-    email:String,
-    password:String
-})
+    name:{
+        type:String,
+        required:true,
+        minlength: 5,
+        maxlength: 50
 
-const Usermodel=new mongoose.model("User",UserSchema);
+    },
+    email:{
+        type:String,
+        required: true,
+        minlength: 5,
+        maxlength: 255,
+        unique: true
+    },
+    password:{
+        type:String,
+        required: true,
+        minlength: 5,
+        maxlength: 1024
+    },
+    // token:{
+    //     type:String,
+    //     unique:true
+    // }
 
-export {Usermodel}
+    
+});
+const validation=function validateUser(user) {
+    const schema =Joi.object( {
+        name: Joi.string().min(5).max(50).required().label("name"),
+        email: Joi.string().min(5).max(255).required().email().label("email"),
+        password: Joi.string().min(5).max(50).required().label("password")
+    });
+    return schema.validate(user);
+}
+
+
+
+const User=new mongoose.model("User",UserSchema);
+export {User,validation}
