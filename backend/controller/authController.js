@@ -10,14 +10,15 @@ import bcrypt from 'bcrypt'
         return res.status(400).send(error.message);
     }
         // Check if this user already exisits
-    // let user = await User.findOne({ email: req.body.email });
+    let user = await User.findOne({ email: req.body.email });
     
-    // if (user) {
-    //     return res.status(400).send('That user already exisits!');}
+    if (user) {
+        return res.status(400).send('That user already exisits!');}
 
         const {password}=req.body;
     const hashedPassword = await bcrypt.hash(password,10)
-    const newUser= await new User({ ...req.body, password: hashedPassword }).save();
+    const newUser= new User({ ...req.body, password: hashedPassword });
+    newUser.save();
     res.status(201).json({
         status:'success',
         message:"new user created"
