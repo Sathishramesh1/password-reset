@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useNavigate,Link } from 'react-router-dom';
 
 function Login({setToken}) {
+  const navigate=useNavigate();
     const[user,setUser]=useState({
         email:""
         ,password:""});
@@ -16,7 +18,7 @@ function Login({setToken}) {
                 },
                 body:JSON.stringify(user)
             }
-            const response = await fetch('http://localhost:3000/api/register/login',config)
+    const response = await fetch('https://password-reset-wegn.onrender.com/api/register/login',config)
               
               
             const data = await response.json();
@@ -25,6 +27,8 @@ function Login({setToken}) {
                  const {token}=data.token;
                  setToken(token);
                  localStorage.setItem('token', token);
+                 setUser({email:"",password:""});
+                 navigate('/protected')
    
         } catch (error) {
             console.log("error",error)
@@ -44,6 +48,7 @@ const handlechange=(e)=>{
   return (
     <div> 
         <h1>Login</h1>
+        
         <form method='post' onSubmit={handleLogin}>
          <div className="mb-3 col-md-6 mx-auto">
       <label htmlFor="email" name='email' className="form-label d-flex justify-content-start">Name</label>
@@ -69,14 +74,20 @@ const handlechange=(e)=>{
         onChange={handlechange}
         
       />
+      
        
          </div>
+         <p><Link to='/ForgetPassword'>Forget Password?</Link></p>
     <div className="d-grid mt-5 col-md-6 mx-auto">
       <button className="btn btn-primary" type="submit">Login</button>
     </div>
+    {/* <div className="d-grid mt-5 col-md-6 mx-auto">
+      <button className="btn btn-primary" type="submit">New user</button>
+    </div> */}
 
 
     </form>
+    
 
 
 

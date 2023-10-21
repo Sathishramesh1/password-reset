@@ -33,7 +33,7 @@ const [user,setUser]=useState({})
                 },
                 body:JSON.stringify(user)
             }
-            const response = await fetch('http://localhost:3000/api/signup',config)
+            const response = await fetch('https://password-reset-wegn.onrender.com/api/signup',config)
             const data = await response.json();
               // enter you logic when the fetch is successful
                  console.log(data);

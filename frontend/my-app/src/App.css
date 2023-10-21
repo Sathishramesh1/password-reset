@@ -9,13 +9,14 @@
 }
 
 .home-outer{
-  width: 75dvw;
-  height: 50dvh;
+  /* width: 75dvw; */
+  /* height: 50dvh; */
   border: 2px solid red;
   margin: auto;
 }
 .home-page{
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: wrap;
   

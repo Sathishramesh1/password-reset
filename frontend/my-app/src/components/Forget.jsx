@@ -1,7 +1,9 @@
-import { Form } from 'formik';
+
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Forget() {
+  const navigate=useNavigate();
     const [email,setEmail]=useState({email:""})
 
 const hanldeSubmit= async(e)=>{
@@ -18,13 +20,14 @@ const hanldeSubmit= async(e)=>{
         body:JSON.stringify(email)
     }
 
-const user= await fetch('http://localhost:3000/api/forget/forgetPassword',config);
+const user= await fetch('https://password-reset-wegn.onrender.com/api/forget/forgetPassword',config);
 const data = await user.json();
 
               // enter you logic when the fetch is successful
                  console.log(data);
                  document.getElementById("email").value=""
-                 setEmail({email:""})
+                 setEmail({email:""});
+                 navigate("/");
 }
  catch (error) {
             console.log("Error in fetching data",error)

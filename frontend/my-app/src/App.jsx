@@ -21,11 +21,11 @@ function App() {
   return (
     <>
     
-       <div className='container mt-5'>
+       <div className='container mt-5 border border-2 col-md-6  '>
        
 <BrowserRouter>
     <Routes>
-     <Route Component={Home} exact path='/home' />
+     <Route Component={Home} exact path='/' />
      <Route Component={Register}  path='/Register' />
      <Route element={<Login setToken={setToken}/>}  path='/Login' />
      <Route element={ token? <Protected logout={logout}/>:<Navigate to='/Login'/>} path='/protected'/>
