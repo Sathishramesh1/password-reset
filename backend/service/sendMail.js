@@ -11,16 +11,17 @@ const sendMail=async(email,subject,text)=>{
             secure: true,
             auth: {
      // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-              user: "sathishrameshkec@gmail.com",
+              user: process.env.USER,
               pass: process.env.PASSWORD,
             },
           });
 
           await transporter.sendMail({
-            from:"sathishrameshkec@gmail.com",
+            from:process.env.USER,
 			to: email,
 			subject: subject,
-            text:text
+      text:text,
+      
 			
 
           });

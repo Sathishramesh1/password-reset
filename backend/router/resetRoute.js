@@ -6,4 +6,4 @@ const router=express.Router();
 router.route('/resetPassword/:token').post(reset);
 
 
-export {router as forget}
+export {router as reset}

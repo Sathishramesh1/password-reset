@@ -16,7 +16,7 @@ const forgetPassword=async(req,res,next)=>{
   // Store the token in the database
   user.token = token;
   await user.save();
-     sendMail(email,"password-reset","nodemail working")
+     sendMail(email,"password-reset",`http://localhost:5173/reset/${token}`)
      res.status(200).json({message:`The password reset mail send to ${email}`})
         
     } catch (error) {

@@ -8,21 +8,18 @@ function Register() {
 const [user,setUser]=useState({})
 
     const validate = values => {
-        const errors = {};
-         
-        if (!values.name) {
+    const errors = {};
+          if (!values.name) {
             console.log(values)
-          errors.title = ' Name Required'; 
+          errors.name = ' Name Required'; 
         }
         if (!values.email) {
-          errors.author = ' Email Required';
+          errors.email = ' Email Required';
         } 
         if (!values.password) {
-          errors.isbn = 'Password Required';
+          errors.password = 'Password Required';
         } 
         
-        
-      
         return errors;
       };
 
@@ -55,7 +52,6 @@ const [user,setUser]=useState({})
           name: '',
           email: '',
           password: '',
-         
         },
         validate ,
         
@@ -63,7 +59,7 @@ const [user,setUser]=useState({})
     
             setUser({...values});
             console.log(user)
-            handleRegister(user);
+            handleRegister({...values});
 
             formik.values.name='';
             formik.values.email='';
@@ -81,7 +77,7 @@ const [user,setUser]=useState({})
     <>
     <div>
         <h1>Create a New User</h1>
-        <form  onSubmit={formik.handleSubmit}>
+        <form  onSubmit={formik.handleSubmit} method='post'>
     <div className="mb-3 col-md-6 mx-auto">
       <label htmlFor="name" name='name' className="form-label d-flex justify-content-start">Name</label>
       <input
@@ -109,7 +105,7 @@ const [user,setUser]=useState({})
        {formik.errors.email? <div style={{color:'red'}}>{formik.errors.email}</div> : null}
     </div>
     <div className="mb-3 col-md-6 mx-auto">
-      <label htmlFor="password"name='password' className="form-label d-flex justify-content-start">Password</label>
+      <label htmlFor="password" name='password' className="form-label d-flex justify-content-start">Password</label>
       <input
         type="password"
         className="form-control"

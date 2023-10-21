@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import {login} from './router/loginRoute.js'
 import {forget} from './router/forget.js'
+import {reset} from './router/resetRoute.js'
 dotenv.config()
 
 
@@ -13,8 +14,9 @@ app.use(express.json());
 app.use(cors());
 
 const PORT=process.env.PORT
+const DB_URL=process.env.DB_URL
 
-mongoose.connect("mongodb://127.0.0.1:27017/user",{
+mongoose.connect(DB_URL,{
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
 }).then(()=>{
@@ -24,7 +26,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/user",{
 //routes
 app.use("/api",authRouter);
 app.use("/api/register",login);
-app.use("/api/reset",forget);
+app.use("/api/forget",forget);
+app.use("/api/reset",reset)
 
 app.get("/",(req,res)=>{
     res.status(200).send('server working ');
