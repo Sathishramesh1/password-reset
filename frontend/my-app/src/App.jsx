@@ -29,7 +29,7 @@ function App() {
      
      <Route Component={Register}  path='/Register' />
      <Route element={<Login setToken={setToken}/>}  exact path='/' />
-     <Route element={ token? <Protected logout={logout}/>:<Navigate to='/Login'/>} path='/protected'/>
+     <Route element={ token? <Protected logout={logout}/>:<Navigate to='/'/>} path='/protected'/>
      <Route Component={Forget}  path='/ForgetPassword' />
      <Route Component={ResetPage}  path='/Reset/:token' />
 

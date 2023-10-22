@@ -21,18 +21,15 @@ const UserSchema=new mongoose.Schema({
         minlength: 5,
         maxlength: 1024
     },
-    token:{
-        type:String,
-        unique:true
-    }
+    token:String
 
     
 });
 const validation=function validateUser(user) {
     const schema =Joi.object( {
-        name: Joi.string().min(5).max(50).required().label("name"),
-        email: Joi.string().min(5).max(255).required().label("email"),
-        password: Joi.string().min(5).max(1024).required().label("password")
+        name:Joi.string().min(5).max(50).required().label("name"),
+        email:Joi.string().min(5).max(255).required().label("email"),
+        password:Joi.string().min(5).max(1024).required().label("password")
     });
     return schema.validate(user);
 }

@@ -4,11 +4,11 @@ import bcrypt from 'bcrypt'
 
 const reset = async(req,res)=>{
   try {
-     const { token } = req.params;
+     const { token } = req.params.token;
      const { password } = req.body;
      
  // Finding the user  token
-  const user = await User.findOne({ token: token });
+  const user = await User.findOne({ token:token });
 
   if (!user) {
     return res.status(400).json({ message: "Invalid token" });
@@ -16,7 +16,7 @@ const reset = async(req,res)=>{
 
   // Update the user's password and delete token
   user.token = undefined;
-  const hashedPassword = await bcrypt.hash(password,10)
+  const hashedPassword = await bcrypt.hash(password,10);
   user.password = hashedPassword;
   await user.save();
 
