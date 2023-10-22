@@ -21,7 +21,8 @@ function ResetPage() {
                 body:JSON.stringify(password)
             };
             console.log("from handlereset")
-  const response = await fetch(`https://password-reset-wegn.onrender.com/api/reset/resetPassword/${token}`,config)
+  const response = await fetch(`https://password-reset-wegn.onrender.com/api/reset/resetPassword/${token}`,config);
+           console.log("res",response);  
             if(response.ok){
             const data = await response.json();
               // enter you logic when the fetch is successful
