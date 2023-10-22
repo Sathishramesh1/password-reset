@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 
 const reset = async(req,res)=>{
   try {
-     const { token } = req.params;
+     const { token } = req.params.token;
      const { password } = req.body;
      
  // Finding the user  token
