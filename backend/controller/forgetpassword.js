@@ -18,7 +18,7 @@ const forgetPassword=async(req,res)=>{
   await user.save();
      sendMail(email,"password-reset",`Click the below Link to reset
      
-     https://musical-clafoutis-d9b771.netlify.app/reset/${token}`)
+     https://musical-clafoutis-d9b771.netlify.app/api/reset/resetPassword/${token}`)
      res.status(200).json({message:`The password reset mail send to ${email}`})
         
     } catch (error) {
