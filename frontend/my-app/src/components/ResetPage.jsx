@@ -18,12 +18,12 @@ function ResetPage() {
                 },
                 body:JSON.stringify(password)
             }
-            const response = await fetch(`https://password-reset-wegn.onrender.com/api/reset//resetPassword/${token}`,config)
+            const response = await fetch(`https://password-reset-wegn.onrender.com/api/reset/resetPassword/${token}`,config)
             const data = await response.json();
               // enter you logic when the fetch is successful
                  console.log(data);
                 setpassword({password:""})
-                setreset(true)
+              
                 navigate("/login")
         } catch (error) {
 
