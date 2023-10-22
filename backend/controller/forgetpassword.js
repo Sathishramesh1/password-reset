@@ -2,13 +2,13 @@ import {User} from '../model/User.js';
 import crypto from 'crypto'
 import {sendMail} from '../service/sendMail.js'
 
-const forgetPassword=async(req,res,next)=>{
+const forgetPassword=async(req,res)=>{
 
     try {
     const {email}=req.body;
     let user = await User.findOne({email:email});
      if(!user){
-        return res.status(404).json({message:"user not found"})
+         res.status(404).json({message:"user not found"});
      }
       // Generate a random token
   const token = crypto.randomBytes(25).toString("hex");
@@ -16,7 +16,9 @@ const forgetPassword=async(req,res,next)=>{
   // Store the token in the database
   user.token = token;
   await user.save();
-     sendMail(email,"password-reset",`http://localhost:5173/reset/${token}`)
+     sendMail(email,"password-reset",`Click the below Link to reset
+     
+     https://musical-clafoutis-d9b771.netlify.app/reset/${token}`)
      res.status(200).json({message:`The password reset mail send to ${email}`})
         
     } catch (error) {

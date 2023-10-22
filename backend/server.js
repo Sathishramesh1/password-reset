@@ -17,12 +17,8 @@ app.use(cors());
 const PORT=process.env.PORT
 const DB_URL=process.env.DB_URL
 
-// mongoose.connect(DB_URL,{
-//     useNewUrlParser: true, 
-//     useUnifiedTopology: true, 
-// }).then(()=>{
-//     console.log("database connected");
-// }).catch((err)=>{console.log("error in connection db",err)});
+
+
 
 //connection to db
 dataBaseConnection();
