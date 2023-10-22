@@ -2,7 +2,7 @@ import {User,validation} from '../model/User.js';
 import bcrypt from 'bcrypt'
 
 
- const Signup = async(req,res,next)=>{
+ const Signup = async(req,res)=>{
     
     try{
         const { error } = validation(req.body);
@@ -13,7 +13,7 @@ import bcrypt from 'bcrypt'
     let user = await User.findOne({ email: req.body.email });
     
     if (user) {
-        return res.status(400).send('That user already exisits!');}
+      return res.status(400).send('That user already exisits!');}
 
         const {password}=req.body;
     const hashedPassword = await bcrypt.hash(password,10)

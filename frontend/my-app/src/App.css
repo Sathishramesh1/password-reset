@@ -11,7 +11,7 @@
 .home-outer{
   /* width: 75dvw; */
   /* height: 50dvh; */
-  border: 2px solid red;
+  /* border: 2px solid red; */
   margin: auto;
 }
 .home-page{
@@ -19,5 +19,9 @@
   flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  
+}
+.mycontainer{
+  min-height: 70dvh;
   
 }

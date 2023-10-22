@@ -62,10 +62,10 @@ function ResetPage() {
       <button className="btn btn-primary" type="submit">Reset</button>
     </div>
         </form>
-        <div className='mt-5'>
+        {/* <div className='mt-5'>
           {isreseted?<p>password reset successful</p>:null}
 
-        </div>
+        </div> */}
     </div>
     
   )
