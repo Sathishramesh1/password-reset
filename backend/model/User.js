@@ -27,7 +27,7 @@ const UserSchema=new mongoose.Schema({
 
     
 });
-const validation=function validateUser(user) {
+const validation = function validateUser(user) {
     const schema =Joi.object( {
         name:Joi.string().min(5).max(50).required().label("name"),
         email:Joi.string().min(5).max(255).required().label("email"),

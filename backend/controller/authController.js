@@ -17,8 +17,8 @@ import bcrypt from 'bcrypt'
 
         const {password}=req.body;
     const hashedPassword = await bcrypt.hash(password,10)
-    const newUser=await new User({ ...req.body, password: hashedPassword });
-    newUser.save();
+    const newUser= await new User({ ...req.body, password: hashedPassword }).save();
+    
     res.status(201).json({
         status:'success',
         message:"new user created"
