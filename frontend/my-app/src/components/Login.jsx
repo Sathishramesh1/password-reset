@@ -126,7 +126,7 @@ const handlechange=(e)=>{
       </div>
        
          </div>
-         <p><Link to='/ForgetPassword'>Forget Password?</Link></p>
+         <p><Link to='/ForgetPassword'>Forgot Password?</Link></p>
     <div className="d-grid mt-5 col-md-8 mx-auto">
       <button className="btn btn-primary" type="submit">Login</button>
     </div>

@@ -113,7 +113,7 @@ const handlechange=(event)=>{
     </div>
     <div className="d-grid mt-5 col-md-8 mx-auto">
       <button className="btn btn-primary fw-bold" type="submit"
-      >Reset</button>
+      >Send Email</button>
     </div>
     </form>
 

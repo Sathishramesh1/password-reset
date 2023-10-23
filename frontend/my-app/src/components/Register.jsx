@@ -60,7 +60,8 @@ const navigate=useNavigate();
                     "Content-Type":"application/json"
                 },
                 body:JSON.stringify(formik.values)};
-            // console.log("afteruser")
+            // console.log("afteruser");
+            
   const response = await fetch('https://password-reset-wegn.onrender.com/api/signup',config);
         const data = await response.json();
   // enter you logic when the fetch is successful
@@ -69,11 +70,13 @@ const navigate=useNavigate();
              
            setTimeout(()=>{
             navigate("/")
-           },3000)
+           },2000)
    
         } catch (error) {
             console.log("error",error)
+            toast.error();
             toast.error("User already exists!")
+            
             // console.log("formik",formik.values)
         }
         
