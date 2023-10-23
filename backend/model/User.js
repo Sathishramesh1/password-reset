@@ -22,7 +22,8 @@ const UserSchema=new mongoose.Schema({
         maxlength: 1024
     },
     token:{
-        type:String
+        type:String,
+       
     }
 
     
