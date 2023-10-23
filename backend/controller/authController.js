@@ -24,7 +24,8 @@ import bcrypt from 'bcrypt'
         message:"new user created"
     })
     }catch(err){
-        console.log("error in creating new user",err)
+        console.log("error in creating new user",err);
+        res.status(404).send("Error ocuured while registration");
     }
 }
 export {Signup}
