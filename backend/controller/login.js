@@ -9,10 +9,10 @@ const login=async(req,res)=>{
     try {
         const {email,password}=req.body;
 
-        let user= await User.findOne({email});
+        let user= await User.findOne({email:email});
 
         if (!user) {
-            return res.status(401).json({ message: "Authentication failed" });
+            return res.status(401).json({ message: "Email not registered" });
           }
 
         const passwordMatch = await bcrypt.compare(password, user.password);
@@ -24,11 +24,11 @@ const login=async(req,res)=>{
             expiresIn: "1h",
           });
         
-          res.json({ token });
+          res.status(200).json({ token });
         
     } catch (error) {
         console.log("Error in  login",error);
-        
+        res.status(404).send("The Error occured while login")
     }
 
 

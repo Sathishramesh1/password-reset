@@ -25,6 +25,7 @@ function Login({setToken}) {
               
               
             const data = await response.json();
+            if(response.ok){
               // enter you logic when the fetch is successful
                  console.log(data.token);
                  const token=data.token;
@@ -36,7 +37,9 @@ function Login({setToken}) {
                  setTimeout(() => {
                   navigate("/protected");
                  }, 3000);
-            
+                }else{
+                  toast.error("Email and password not registred")
+                }
                 
    
         } catch (error) {

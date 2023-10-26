@@ -22,7 +22,7 @@ import bcrypt from 'bcrypt'
     res.status(201).json({
         status:'success',
         message:"new user created"
-    })
+    });
     }catch(err){
         console.log("error in creating new user",err);
         res.status(404).send("Error ocuured while registration");
